@@ -5,6 +5,7 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: Never
       containers:
       - name: readiness
         image: quay.io/centos/centos
