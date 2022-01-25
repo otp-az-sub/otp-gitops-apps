@@ -1,15 +1,9 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: {{ .Values.name }}
 spec:
-  selector:
-    matchLabels:
-      app: {{ .Values.name }}
   template:
-    metadata:
-      labels:
-        app: {{ .Values.name }}
     spec:
       containers:
       - name: readiness
