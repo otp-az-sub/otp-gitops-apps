@@ -7,9 +7,7 @@ metadata:
   name: cockroachdb-placement-1
   namespace: multi-cluster-cockroachdb
 spec:
-  clusters:
-  - aws-cluster-shared-0
-  - aws-cluster-shared-1
-  - aws-cluster-shared-3
-  
+  clusterSelector:
+    matchLabels:
+      workload: cockroachdb
       
