@@ -17,7 +17,7 @@ spec:
       operator: In
       values:
       - AWS
-    - key: 'cluster.open-cluster-management.io/clusterset'
+    - key: cluster.open-cluster-management.io/clusterset
       operator: In
       values:
       - azure-aws-clusterset
