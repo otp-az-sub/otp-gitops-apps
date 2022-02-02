@@ -7,18 +7,9 @@ metadata:
   name: cockroachdb-placement-1
   namespace: multi-cluster-cockroachdb
 spec:
-  clusterSelector:
-    matchExpressions:
-    - key: vendor
-      operator: In
-      values:
-      - OpenShift
-    - key: cloud
-      operator: In
-      values:
-      - AWS
-    - key: cluster.open-cluster-management.io/clusterset
-      operator: In
-      values:
-      - azure-aws-clusterset
+  clusters:
+  - aws-cluster-shared-0
+  - aws-cluster-shared-1
+  - aws-cluster-shared-3
+  
       
