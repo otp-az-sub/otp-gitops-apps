@@ -4,14 +4,14 @@ kind: Subscription
 metadata:
   annotations:
     apps.open-cluster-management.io/git-branch: master
-    apps.open-cluster-management.io/git-path: clusters/cockroachdb/cluster-1/
+    apps.open-cluster-management.io/git-path: clusters/cockroachdb/deploy/
     apps.open-cluster-management.io/reconcile-option: merge
   labels:
     app: cockroachdb
-  name: cockroachdb-subscription-1
+  name: cockroachdb-subscription
   namespace: multi-cluster-cockroachdb
 spec:
-  channel: multi-cluster-cockroachdb/cockroachdb-app-latest
+  channel: multi-cluster-cockroachdb/cockroachdb-channel
   placement:
     placementRef:
       kind: PlacementRule
