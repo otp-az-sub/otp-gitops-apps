@@ -8,13 +8,6 @@ metadata:
   namespace: multi-cluster-cockroachdb
 spec:
   clusterSelector:
-    matchExpressions:
-    - key: vendor
-      operator: In
-      values:
-      - OpenShift
-    - key: cloud
-      operator: In
-      values:
-      - AWS
+    matchLabels:
+      cloud: AWS
     
