@@ -13,5 +13,5 @@ spec:
     matchExpressions: []
     matchLabels:
       # Replace value with Cluster you wish to provision too.
-      #cluster.open-cluster-management.io/clusterset: multicloud-cluster-set
-      name: azure-dojo-01
+      cluster.open-cluster-management.io/clusterset: multicloud-cluster-set
+      #name: azure-dojo-01
