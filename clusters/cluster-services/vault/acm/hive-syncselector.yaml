@@ -5,7 +5,7 @@ metadata:
 spec:
   clusterDeploymentSelector:
     matchLabels:
-      cluster.open-cluster-management.io/clusterset: azure-aws-clusterset
+      vault-host: "true" 
   secretMappings:
     - sourceRef:
         name: vault-intermediate-ca
