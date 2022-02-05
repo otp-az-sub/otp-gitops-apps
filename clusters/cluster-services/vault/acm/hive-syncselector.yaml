@@ -2,6 +2,7 @@ apiVersion: hive.openshift.io/v1
 kind: SelectorSyncSet
 metadata:
   name: vault-intermediate-ca-sync
+  namespace: vault
 spec:
   clusterDeploymentSelector:
     matchLabels:
@@ -9,7 +10,7 @@ spec:
   secretMappings:
     - sourceRef:
         name: vault-intermediate-ca
-        namespace: vault
+        namespace: vault 
       targetRef:
         name: rootca
-        namespace: vault 
+        namespace: vault

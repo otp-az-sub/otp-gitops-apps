@@ -112,8 +112,6 @@ patches:
           disable_mlock = true
           ui = true
 
-          nick
-
           listener "tcp" {
             address = "[::]:8200"
             cluster_address = "[::]:8201"
