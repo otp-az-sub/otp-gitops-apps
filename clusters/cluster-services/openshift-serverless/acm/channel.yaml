@@ -2,8 +2,8 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
 metadata:
-  name: transaction-service-app-latest
-  namespace: bank-infra
+  name: openshift-serverless-channel
+  namespace: openshift-serverless
 spec:
   pathname: https://github.com/otp-az-sub/otp-gitops-apps.git
   type: GitHub
