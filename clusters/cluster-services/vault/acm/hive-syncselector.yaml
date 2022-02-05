@@ -6,7 +6,7 @@ metadata:
 spec:
   clusterDeploymentSelector:
     matchLabels:
-      vault-host: "true" 
+      name: azure-cluster-08 
   secretMappings:
     - sourceRef:
         name: vault-intermediate-ca
