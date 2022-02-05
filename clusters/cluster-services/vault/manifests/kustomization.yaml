@@ -1,4 +1,5 @@
 resources:
+  - namespace.yaml 
   - certificate.yaml # needs cert-manager
   - cluster-secret-store.yaml # needs cert-manager
   - cm-vault-config.yaml 
