@@ -11,7 +11,7 @@ resources:
   - crb-vault-nonroot-scc.yaml
   - crb-vault-server-binding.yaml
   - crb-vault-system-auth.yaml
-  - credentials-request.yaml
+#  - credentials-request.yaml
   - deployment.yaml
   - issuer.yaml   #needs cert-manager
   - mutating-webhook-configuration.yaml
