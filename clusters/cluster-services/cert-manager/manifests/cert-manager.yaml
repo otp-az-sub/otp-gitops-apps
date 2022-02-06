@@ -16849,7 +16849,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: cert-manager-cainjector:leaderelection
-  namespace: kube-system
+  namespace: cert-manager #nick
   labels:
     app: cainjector
     app.kubernetes.io/name: cainjector
@@ -16883,7 +16883,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: cert-manager:leaderelection
-  namespace: kube-system
+  namespace: cert-manager #nick
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -16938,7 +16938,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cert-manager-cainjector:leaderelection
-  namespace: kube-system
+  namespace: cert-manager #nick
   labels:
     app: cainjector
     app.kubernetes.io/name: cainjector
@@ -16961,7 +16961,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cert-manager:leaderelection
-  namespace: kube-system
+  namespace: cert-manager #nick
   labels:
     app: cert-manager
     app.kubernetes.io/name: cert-manager
@@ -17085,7 +17085,7 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
           - --v=2
-          - --leader-election-namespace=kube-system
+          - --leader-election-namespace=cert-manager #nick
           env:
           - name: POD_NAMESPACE
             valueFrom:
@@ -17136,7 +17136,7 @@ spec:
           args:
           - --v=2
           - --cluster-resource-namespace=$(POD_NAMESPACE)
-          - --leader-election-namespace=kube-system
+          - --leader-election-namespace=cert-manager #nick
           ports:
           - containerPort: 9402
             protocol: TCP
