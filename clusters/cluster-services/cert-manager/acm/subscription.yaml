@@ -11,6 +11,10 @@ metadata:
       apps.open-cluster-management.io/reconcile-option: replace
 spec:
   channel: cert-manager/cert-manager-channel
+  allow:
+  - apiVersion: '*'
+    kinds: 
+    - '*'
   placement:
     placementRef:
       kind: PlacementRule
