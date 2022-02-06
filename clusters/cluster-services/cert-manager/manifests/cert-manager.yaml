@@ -16639,7 +16639,7 @@ metadata:
     app.kubernetes.io/version: "v1.6.1"
 rules:
 - apiGroups: [""]
-  resources: ["secretss"]
+  resources: ["secrets"]
   verbs: ["list", "get", "watch"]
 ---
 # Source: cert-manager/templates/cainjector-rbac.yaml
