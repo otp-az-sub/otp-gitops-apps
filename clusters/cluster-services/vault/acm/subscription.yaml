@@ -12,9 +12,6 @@ metadata:
 spec:
   channel: vault/vault-channel
   allow:
-  - apiVersion: '*'
-    kinds: '*'
-
   placement:
     placementRef:
       kind: PlacementRule
