@@ -11,6 +11,10 @@ metadata:
       apps.open-cluster-management.io/reconcile-option: replace
 spec:
   channel: vault/vault-channel
+  allow:
+  - apiVersion: '*'
+    kinds: '*'
+
   placement:
     placementRef:
       kind: PlacementRule
