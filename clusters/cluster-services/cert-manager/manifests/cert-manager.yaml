@@ -16626,6 +16626,42 @@ rules:
     resources: ["subjectaccessreviews"]
     verbs: ["create"]
 ---
+# work around for not using kubesystem #nick
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cert-manager-no-kubesystem
+  labels:
+    app: cert-manager
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/instance: cert-manager
+    app.kubernetes.io/component: "cainjector"
+    app.kubernetes.io/version: "v1.6.1"
+rules:
+- apiGroups: [""]
+  resources: ["secretss"]
+  verbs: ["list", "get", "watch"]
+---
+# Source: cert-manager/templates/cainjector-rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cert-manager-no-kubesystem
+  labels:
+    app: cainjector
+    app.kubernetes.io/name: cainjector
+    app.kubernetes.io/instance: cert-manager
+    app.kubernetes.io/component: "cainjector"
+    app.kubernetes.io/version: "v1.6.1"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cert-manager-no-kubesystem
+subjects:
+  - name: cert-manager-cainjector
+    namespace: "cert-manager"
+    kind: ServiceAccount
+---    
 # Source: cert-manager/templates/webhook-rbac.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
