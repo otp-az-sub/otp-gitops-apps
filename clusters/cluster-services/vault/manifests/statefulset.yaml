@@ -54,6 +54,18 @@ spec:
           secret:
             secretName: vault-global-tls
             optional: true
+      initContainers:
+          #init container to determine clustername
+        - name: get-cluster-name
+          image: registry.redhat.io/openshift4/ose-cli:v4.8
+          imagePullPolicy: Always
+          command:
+            - "sh"
+            - "-c"
+            - "oc get Klusterlet klusterlet -o jsonpath='{.spec.clusterName}' > /vault/data/clustername"
+          volumeMounts:
+            - name: data
+              mountPath: /vault/data
       containers:
         - name: vault
 
@@ -64,7 +76,7 @@ spec:
           - "-ec"
           args:
           - |
-            export CLUSTER_NAME=$(oc get Klusterlet klusterlet -o jsonpath='{.spec.clusterName}');
+            export CLUSTER_NAME=$(cat /vault/data/clustername)
             sed -E "s/HOST_IP/${HOST_IP?}/g" /vault/config/extraconfig-from-values.hcl > /tmp/storageconfig.hcl;
             sed -Ei "s/POD_IP/${POD_IP?}/g" /tmp/storageconfig.hcl;
             /usr/local/bin/docker-entrypoint.sh vault server -config=/tmp/storageconfig.hcl
