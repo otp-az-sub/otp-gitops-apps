@@ -76,7 +76,10 @@ spec:
           - "-ec"
           args:
           - |
-            export CLUSTER_NAME=$(cat /vault/data/clustername)
+            export CLUSTER_NAME=$(cat /vault/data/clustername);
+            export VAULT_CLUSTER_ADDR="https://$HOSTNAME.$CLUSTER_NAME.vault-internal.$VAULT_K8S_NAMESPACE.svc.clusterset.local:8201";
+            export VAULT_RAFT_NODE_ID="$HOSTNAME-$CLUSTER_NAME";
+
             sed -E "s/HOST_IP/${HOST_IP?}/g" /vault/config/extraconfig-from-values.hcl > /tmp/storageconfig.hcl;
             sed -Ei "s/POD_IP/${POD_IP?}/g" /tmp/storageconfig.hcl;
             /usr/local/bin/docker-entrypoint.sh vault server -config=/tmp/storageconfig.hcl
@@ -109,10 +112,11 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-            - name: VAULT_CLUSTER_ADDR
-              value: "https://$(HOSTNAME).$(CLUSTER_NAME).vault-internal.$(VAULT_K8S_NAMESPACE).svc.clusterset.local:8201"
-            - name: VAULT_RAFT_NODE_ID
-              value: $(HOSTNAME)-$(CLUSTER_NAME)
+# doing the same in the init script to take in the cluster name
+#            - name: VAULT_CLUSTER_ADDR
+#              value: "https://$(HOSTNAME).$CLUSTER_NAME.vault-internal.$(VAULT_K8S_NAMESPACE).svc.clusterset.local:8201"
+#            - name: VAULT_RAFT_NODE_ID
+#              value: $(HOSTNAME)-$CLUSTER_NAME
             - name: HOME
               value: "/home/vault"
           volumeMounts:
