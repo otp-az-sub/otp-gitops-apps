@@ -1,12 +1,3 @@
-clusterNames:
-  - aws-cluster-shared-0
-  - aws-cluster-shared-1
-  - aws-cluster-shared-2
-
-infrastructure: aws  
-
-global_base_domain:   
-
 cockroachdb:
   image:
     repository: cockroachdb/cockroach
@@ -14,8 +5,8 @@ cockroachdb:
     # repository: cockroachdb/cockroach-unstable
     # tag: "v21.1.0-rc.2"    
   storage:
-  cluster: aws-0
-  uid: 1000940000
+  # cluster: aws-0
+  # uid: 1000940000
   conf:
     cache: 8GiB
     max-sql-memory: 8GiB
@@ -29,16 +20,16 @@ cockroachdb:
       - cockroachdb-0.aws-cluster-shared-2.cockroachdb.cockroachdb.svc.clusterset.local
       - cockroachdb-1.aws-cluster-shared-2.cockroachdb.cockroachdb.svc.clusterset.local
       - cockroachdb-2.aws-cluster-shared-2.cockroachdb.cockroachdb.svc.clusterset.local            
-  fullnameOverride: cockroachdb
-  statefulset:
-    replicas: 3
-    tolerations:
-      - key: "workload"
-        operator: "Equal"
-        value: "cockroach"
-        effect: "NoSchedule"
-    nodeSelector:
-      workload: cockroach    
+  # fullnameOverride: cockroachdb
+  # statefulset:
+  #   replicas: 3
+  #   tolerations:
+  #     - key: "workload"
+  #       operator: "Equal"
+  #       value: "cockroach"
+  #       effect: "NoSchedule"
+  #   nodeSelector:
+  #     workload: cockroach    
     # podAntiAffinity:
     #   preferredDuringSchedulingIgnoredDuringExecution:
     #     - weight: 100
