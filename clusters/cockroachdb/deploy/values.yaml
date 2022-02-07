@@ -1,3 +1,6 @@
+fullname: cockroachdb-multicluster
+
+
 cockroachdb:
   image:
     repository: cockroachdb/cockroach
