@@ -1,4 +1,5 @@
 fullname: cockroachdb-multicluster
+fullnameOverride: cockroachdb-multicluster
 
 
 cockroachdb:
