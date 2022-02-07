@@ -8,6 +8,8 @@ clusterNames:
   - aws-cluster-shared-0 
   - aws-cluster-shared-1
 
+infrastructure: aws
+
 cockroachdb:
   statefulset:
   replicas: 3
