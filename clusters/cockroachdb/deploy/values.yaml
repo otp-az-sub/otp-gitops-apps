@@ -2,6 +2,21 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+global_base_domain: global.ibmsbaasonaws.com 
+
+clusterNames:
+  - aws-cluster-shared-0 
+  - aws-cluster-shared-1
+
+cockroachdb:
+  statefulset:
+  replicas: 3
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  budget:
+    maxUnavailable: 1
+
 replicaCount: 1
 
 image:
@@ -11,8 +26,8 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "cockroachdb-multicluster"
+fullnameOverride: "cockroachdb-multicluster"
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -16,12 +16,13 @@ spec:
 {{- range .Values.clusterNames }}
 {{- $cluster:= . }}    
 {{- range until (int $cockroachdb.statefulset.replicas) }}
-  - {{ $fullname }}-{{ . }}.{{ $cluster }}.{{ $fullname }}.{{ $namespace }}.svc.clusterset.local
+  - cockroachdb-{{ . }}.{{ $cluster }}.cockroachdb.{{ $namespace }}.svc.clusterset.local
 {{- end }}
 {{- end }}
 {{- range until (int .Values.cockroachdb.statefulset.replicas) }}
-  - {{ $fullname }}-{{ . }}.{{ $fullname }}.{{ $namespace }}.svc.cluster.local
-  - {{ $fullname }}-{{ . }}.{{ $fullname }}.{{ $namespace }}.svc
+  - cockroachdb-{{ . }}.cockroachdb.{{ $namespace }}.svc.cluster.local
+  - cockroachdb-{{ . }}.cockroachdb.{{ $namespace }}.svc
+  - cockroachdb-{{ . }}.cockroachdb
 {{- end }}
   duration: 168h
   renewBefore: 1h
