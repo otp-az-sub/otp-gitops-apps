@@ -2,8 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  # name: {{ template "cockroachdb-multicluster.fullname" . }}-tools
-  name: cdb-tools
+  name: {{ template "cockroachdb-multicluster.fullname" . }}-tools
 spec:
   selector:
     matchLabels:

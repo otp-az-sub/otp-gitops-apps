@@ -1,53 +1,79 @@
-fullname: cockroachdb-multicluster
-fullnameOverride: cockroachdb-multicluster
+# Default values for cockroachdb-multicluster.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
 
+replicaCount: 1
 
-cockroachdb:
-  image:
-    repository: cockroachdb/cockroach
-    tag: "v21.1.7"
-    # repository: cockroachdb/cockroach-unstable
-    # tag: "v21.1.0-rc.2"    
-  storage:
-  # cluster: aws-0
-  # uid: 1000940000
-  conf:
-    cache: 8GiB
-    max-sql-memory: 8GiB
-    join: 
-      - cockroachdb-0.aws-cluster-shared-0.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-1.aws-cluster-shared-0.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-2.aws-cluster-shared-0.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-0.aws-cluster-shared-1.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-1.aws-cluster-shared-1.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-2.aws-cluster-shared-1.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-0.aws-cluster-shared-2.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-1.aws-cluster-shared-2.cockroachdb.cockroachdb.svc.clusterset.local
-      - cockroachdb-2.aws-cluster-shared-2.cockroachdb.cockroachdb.svc.clusterset.local            
-  # fullnameOverride: cockroachdb
-  # statefulset:
-  #   replicas: 3
-  #   tolerations:
-  #     - key: "workload"
-  #       operator: "Equal"
-  #       value: "cockroach"
-  #       effect: "NoSchedule"
-  #   nodeSelector:
-  #     workload: cockroach    
-    # podAntiAffinity:
-    #   preferredDuringSchedulingIgnoredDuringExecution:
-    #     - weight: 100
-    #       podAffinityTerm:
-    #         labelSelector:
-    #           matchLabels:
-    #             app.kubernetes.io/component: cockroachdb
-    #             app.kubernetes.io/instance: cockroachdb
-    #             app.kubernetes.io/name: cockroachdb
-    #         topologyKey: failure-domain.beta.kubernetes.io/zone
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
-  tls:
-    enabled: yes
-    certs:
-      provided: yes
-      tlsSecret: yes
-      nodeSecret: cockroachdb-tls
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
