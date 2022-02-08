@@ -222,7 +222,7 @@ spec:
             # See details explained here:
             # https://github.com/helm/charts/pull/18993#issuecomment-558795102
             - >-
-              . /topology-conf/topology.conf &&
+              source /topology-conf/topology.conf &&
               exec /cockroach/cockroach
             {{- if index .Values.conf `single-node` }}
               start-single-node
