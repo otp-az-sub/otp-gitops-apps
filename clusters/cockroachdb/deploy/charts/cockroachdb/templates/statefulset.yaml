@@ -18,7 +18,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  serviceName: {{ template "cockroachdb.fullname" . }}
+  serviceName: cockroachdb
   replicas: {{ .Values.statefulset.replicas | int64 }}
   updateStrategy: {{- toYaml .Values.statefulset.updateStrategy | nindent 4 }}
   podManagementPolicy: {{ .Values.statefulset.podManagementPolicy | quote }}
