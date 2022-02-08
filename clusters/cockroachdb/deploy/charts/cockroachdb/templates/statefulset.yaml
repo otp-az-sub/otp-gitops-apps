@@ -203,9 +203,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           args:
-            # - shell
-            # - -ecx
-            - bash
+            - shell
+            - -ecx
+            # - bash
             # The use of qualified `hostname -f` is crucial:
             # Other nodes aren't able to look up the unqualified hostname.
             #
