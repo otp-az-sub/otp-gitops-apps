@@ -12,7 +12,7 @@ spec:
   duration: 168h
   renewBefore: 1h
   issuerRef:
-    name: vault-issuer
+    name: vault-pki
     # We can reference ClusterIssuers by changing the kind here.
     # The default value is Issuer (i.e. a locally namespaced Issuer)
     kind: ClusterIssuer
