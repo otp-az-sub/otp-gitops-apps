@@ -5,7 +5,8 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ template "cockroachdb.fullname" . }}
+  # name: {{ template "cockroachdb.fullname" . }}
+  name: cockroachdb
   namespace: {{ .Release.Namespace | quote }}
   labels:
     helm.sh/chart: {{ template "cockroachdb.chart" . }}
