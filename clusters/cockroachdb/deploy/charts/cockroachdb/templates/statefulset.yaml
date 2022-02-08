@@ -248,11 +248,11 @@ spec:
             {{- end }}
             {{- end }}
               --logtostderr={{ .Values.conf.logtostderr }}
-            {{- if .Values.tls.enabled }}
-              --certs-dir=/cockroach/cockroach-certs/
-            {{- else }}
+            # {{- if .Values.tls.enabled }}
+            #   --certs-dir=/cockroach/cockroach-certs/
+            # {{- else }}
               --insecure
-            {{- end }}
+            # {{- end }}
             {{- with .Values.conf.attrs }}
               --attrs={{ join `:` . }}
             {{- end }}
