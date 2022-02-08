@@ -329,7 +329,7 @@ init:
 
 # Whether to run securely using TLS certificates.
 tls:
-  enabled: false
+  enabled: true
   serviceAccount:
     create: true
     name: ""

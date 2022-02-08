@@ -56,7 +56,7 @@ spec:
         runAsUser: {{ .Values.uid }}
         runAsGroup: {{ .Values.guid }}
         fsGroup: {{ .Values.guid }}
-    {{- if not .Values.tls.enabled }}
+    {{- if .Values.tls.enabled }}
       serviceAccountName: {{ template "cockroachdb.tls.serviceAccount.name" . }}
       initContainers:
         - name: "topology-discovery"
