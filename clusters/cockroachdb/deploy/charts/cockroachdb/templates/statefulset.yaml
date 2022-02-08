@@ -1,7 +1,8 @@
 kind: StatefulSet
 apiVersion: {{ template "cockroachdb.statefulset.apiVersion" . }}
 metadata:
-  name: {{ template "cockroachdb.fullname" . }}
+  # name: {{ template "cockroachdb.fullname" . }}
+  name: cockroachdb
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     secret.reloader.stakater.com/reload: "certs"

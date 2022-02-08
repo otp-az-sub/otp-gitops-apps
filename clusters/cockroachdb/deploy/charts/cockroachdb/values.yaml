@@ -57,7 +57,13 @@ conf:
   # one, use the below list to join to the existing instance.
   # Each item in the array should be a FQDN (and port if needed) resolvable by
   # new Pods.
-  join: []
+  join: 
+      - cockroachdb-0.aws-shared-0.cockroachdb.cockroachdb.svc.clusterset.local
+      - cockroachdb-1.aws-shared-0.cockroachdb.cockroachdb.svc.clusterset.local
+      - cockroachdb-2.aws-shared-0.cockroachdb.cockroachdb.svc.clusterset.local
+      - cockroachdb-0.aws-shared-1.cockroachdb.cockroachdb.svc.clusterset.local
+      - cockroachdb-1.aws-shared-1.cockroachdb.cockroachdb.svc.clusterset.local
+      - cockroachdb-2.aws-shared-1.cockroachdb.cockroachdb.svc.clusterset.local
 
   # Logs at or above this threshold to STDERR.
   logtostderr: INFO
