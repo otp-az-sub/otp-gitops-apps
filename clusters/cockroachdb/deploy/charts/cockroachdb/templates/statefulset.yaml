@@ -237,7 +237,7 @@ spec:
                   ${STATEFULSET_NAME}-{{ $i }}.${STATEFULSET_FQDN}:{{ $.Values.service.ports.grpc.internal.port | int64 -}}
                 {{- end -}}
               {{- end }}
-              --advertise-addr=$(hostname).aws-shared-0.cockroachdb.multi-cluster-cockroachdb.svc.clusterset.local
+              --advertise-addr=$(hostname).aws-cluster-shared-0.cockroachdb.multi-cluster-cockroachdb.svc.clusterset.local
               --locality-advertise-addr=region=${region}@$(hostname).${STATEFULSET_FQDN}
             {{- with index .Values.conf `cluster-name` }}
               --cluster-name={{ . }}
