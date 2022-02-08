@@ -330,6 +330,9 @@ init:
 # Whether to run securely using TLS certificates.
 tls:
   enabled: true
+  serviceAccount:
+    create: true
+    name: ""
   certs:
     provided: yes
     # Secret name for node cert.
