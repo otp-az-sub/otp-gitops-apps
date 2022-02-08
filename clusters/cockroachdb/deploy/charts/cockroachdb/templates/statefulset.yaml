@@ -203,9 +203,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           args:
-            - bash
+            - shell
             - -ecx
-            # - bash
             # The use of qualified `hostname -f` is crucial:
             # Other nodes aren't able to look up the unqualified hostname.
             #
@@ -223,7 +222,7 @@ spec:
             # See details explained here:
             # https://github.com/helm/charts/pull/18993#issuecomment-558795102
             - >-
-              source /topology-conf/topology.conf &&
+              . /topology-conf/topology.conf &&
               exec /cockroach/cockroach
             {{- if index .Values.conf `single-node` }}
               start-single-node
