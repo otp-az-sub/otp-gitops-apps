@@ -238,7 +238,7 @@ spec:
                 {{- end -}}
               {{- end }}
               # --advertise-addr=$(hostname).{{ .Values.cluster }}.cockroachdb.cockroachdb.svc.clusterset.local
-              --advertise-addr=$(hostname).cockroachdb.multi-cluster-cockroachdb.svc.clusterset.local
+              --advertise-addr=$(hostname).aws-shared-0.cockroachdb.multi-cluster-cockroachdb.svc.clusterset.local
               --locality-advertise-addr=region=${region}@$(hostname).${STATEFULSET_FQDN}
             {{- with index .Values.conf `cluster-name` }}
               --cluster-name={{ . }}
@@ -248,11 +248,11 @@ spec:
             {{- end }}
             {{- end }}
               --logtostderr={{ .Values.conf.logtostderr }}
-            # {{- if .Values.tls.enabled }}
-            #   --certs-dir=/cockroach/cockroach-certs/
-            # {{- else }}
+            {{- if .Values.tls.enabled }}
+              --certs-dir=/cockroach/cockroach-certs/
+            {{- else }}
               --insecure
-            # {{- end }}
+            {{- end }}
             {{- with .Values.conf.attrs }}
               --attrs={{ join `:` . }}
             {{- end }}
