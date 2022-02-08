@@ -338,10 +338,10 @@ spec:
       {{- if .Values.tls.certs.tlsSecret }}
         - name: certs-tls
           secret:
-            secretName: {{ template "cockroachdb.fullname" . }}-tls
+            secretName: cockroachdb-tls
         - name: cert-reload-config
           configMap:
-            name: {{ template "cockroachdb.fullname" . }}-certs-reload
+            name: cockroachdb-certs-reload
             defaultMode: 0770          
       {{- end }}
       {{- end }}      
