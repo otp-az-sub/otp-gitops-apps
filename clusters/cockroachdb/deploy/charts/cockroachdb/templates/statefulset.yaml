@@ -270,9 +270,9 @@ spec:
             {{- end }}
           env:
             - name: STATEFULSET_NAME
-              value: {{ template "cockroachdb.fullname" . }}
+              value: cockroachdb
             - name: STATEFULSET_FQDN
-              value: {{ template "cockroachdb.fullname" . }}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain }}
+              value: cockroachdb.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain }}
             - name: COCKROACH_CHANNEL
               value: kubernetes-helm
           {{- with .Values.statefulset.env }}
