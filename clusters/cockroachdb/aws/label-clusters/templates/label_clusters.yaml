@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cockroachdb-managed-cluster-labeller
+  namespace: openshift-gitops
+spec:
+  template:
+    spec:
+      containers:
+      - name: cdb-labeller
+        image: quay.io/XX/YY     # TODO: Change me 
+        imagePullPolicy: Always
+        env:
+          - name: CLUSTER_LIST
+            value: {{ .Values.cdbClusters }}
+      restartPolicy: OnFailure
+  backoffLimit: 2
