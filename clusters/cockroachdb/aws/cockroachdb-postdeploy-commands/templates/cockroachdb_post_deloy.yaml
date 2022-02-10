@@ -2,13 +2,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: cockroachdb-post-deploy-commands
+  name: cockroachdb-post-deploy-{{ . }}
   namespace: openshift-gitops
 spec:
   template:
     spec:
       containers:
-      - name: cockroachdb-post-deploy-commands-executor
+      - name: cockroachdb-post-deploy-{{ . }}
         image: quay.io/langley_millard_ibm/patch_cockroach:latest 
         imagePullPolicy: Always
         env:
