@@ -1,3 +1,4 @@
+{{- range .Values.cdbClusters }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -8,11 +9,12 @@ spec:
     spec:
       containers:
       - name: cockroachdb-post-deploy-commands-executor
-        image: quay.io/AA/BB     # TODO: Change me 
+        image: quay.io/langley_millard_ibm/patch_cockroach:latest 
         imagePullPolicy: Always
         env:
           - name: CLUSTER_LIST
-            value: {{ .Values.cdbClusters }}
+            value: {{ . }}
       restartPolicy: OnFailure
   backoffLimit: 2
-  
+---
+{{- end }}
