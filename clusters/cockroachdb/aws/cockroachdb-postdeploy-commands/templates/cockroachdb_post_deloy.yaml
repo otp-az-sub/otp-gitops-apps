@@ -15,7 +15,7 @@ spec:
           - name: CLUSTER_LIST
             value: {{ . }}
           - name: IDENTIFIER
-            value: {{ .Values.aliasIdentifier }}
+            value: ABCDEF   # FIXME
           - name: NAMESPACE
             value: multi-cluster-cockroachdb
           - name: STATEFULSET
