@@ -17,7 +17,8 @@ spec:
         # autoscaling.knative.dev/maxScale: "50"
     spec:
       containers:
-        - image: quay.io/wdovey/knative-transaction-process:with-auth
+      # - image: quay.io/wdovey/knative-transaction-process:with-auth
+        - image: quay.io/michelle_jiang_ibm/bank-knative-service:latest
           envFrom:
             - secretRef:
                 name: bank-oidc-adminuser
