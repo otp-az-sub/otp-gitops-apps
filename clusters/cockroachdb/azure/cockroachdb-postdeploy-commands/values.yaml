@@ -1,5 +1,0 @@
-cdbClusters:
-  - aws-cluster-shared-0
-  - aws-cluster-shared-1
-
-aliasIdentifier: ABCDEF
