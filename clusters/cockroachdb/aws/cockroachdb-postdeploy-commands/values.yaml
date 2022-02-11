@@ -1,5 +1,5 @@
 cdbClusters:
-  - aws-cluster-shared-0
-  - aws-cluster-shared-1
+  - cdb-azure-1
+  - cdb-azure-3
 
 aliasIdentifier: ABCDEF
