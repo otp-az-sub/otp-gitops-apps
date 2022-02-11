@@ -5,8 +5,8 @@
 global_base_domain: global.ibmsbaasonaws.com 
 
 clusterNames:
-  - aws-cluster-shared-0 
-  - aws-cluster-shared-1
+  - cdb-azure-1 
+  - cdb-azure-3
 
 infrastructure: aws
 
